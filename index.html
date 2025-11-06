@@ -1,46 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Santiago Paulin - Data Engineer & Financial Analyst</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Santiago Paulin | Data Engineer</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
+      background-color: #1B1E23;
+      color: #F2F4F7;
     }
+
     header {
-      background-color: #222;
-      color: #fff;
       text-align: center;
       padding: 60px 20px;
+      background: #24272D;
+      border-bottom: 3px solid #0077B5;
     }
+
+    h1 {
+      font-size: 48px;
+      margin: 0;
+    }
+
+    .typing {
+      font-size: 20px;
+      color: #0077B5;
+      height: 32px;
+      margin-top: 10px;
+    }
+
     nav {
-      background: #111;
-      padding: 10px;
       text-align: center;
+      background: #000;
+      padding: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
+
     nav a {
-      color: #fff;
-      text-decoration: none;
       margin: 0 15px;
+      color: #F2F4F7;
+      text-decoration: none;
       font-weight: bold;
     }
+
+    nav a:hover {
+      color: #0077B5;
+    }
+
     section {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-      background: white;
-      margin-top: 25px;
-      border-radius: 10px;
+      padding: 50px 12%;
     }
-    h1, h2 {
-      margin-bottom: 20px;
+
+    h2 {
+      color: #0077B5;
+      font-size: 30px;
+      border-left: 6px solid #0077B5;
+      padding-left: 10px;
     }
-    ul {
-      line-height: 1.8;
+
+    .card {
+      background: #24272D;
+      padding: 25px;
+      margin: 25px 0;
+      border-radius: 12px;
+      transition: 0.3s;
+      cursor: pointer;
+      border: 1px solid #333;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 12px #0077B5;
+    }
+
+    img.logo {
+      height: 35px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+    .flags span {
+      font-size: 22px;
+      margin-right: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #000;
+      color: #FFF;
+      margin-top: 50px;
     }
   </style>
 </head>
@@ -49,12 +103,13 @@
 
   <header>
     <h1>Santiago Paulin</h1>
-    <p>Data Engineer | Financial Analyst | Business Intelligence</p>
+    <div class="typing" id="typingText"></div>
   </header>
 
   <nav>
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
     <a href="#languages">Languages</a>
     <a href="#contact">Contact</a>
@@ -63,68 +118,114 @@
   <section id="about">
     <h2>About Me</h2>
     <p>
-      I'm a data-driven professional with international experience in Italy, France, and Argentina.
-      Currently working as a Data Engineer at Mercado Libre with a strong background in financial
-      analytics, acquired working at Accenture and PFS Global. I enjoy transforming complex
-      business challenges into scalable data solutions and impactful insights.
+      I'm a data-driven professional with international experience in the United States, Italy, France and Argentina.
+      Currently working as a Data Engineer at Mercado Libre with a strong background in financial analytics,
+      acquired working at Accenture and PFS Global.
+      I enjoy designing scalable data solutions that turn business challenges into impactful insights.
     </p>
   </section>
 
   <section id="experience">
     <h2>Professional Experience</h2>
-    <ul>
-      <li>
-        <strong>Data Engineer — Mercado Libre (Argentina)</strong><br>
-        Building ETL pipelines, SQL optimization, automation, and logistics performance analytics.
-      </li>
-      <li>
-        <strong>Financial Analyst — Accenture (Argentina)</strong><br>
-        Financial reporting, margin analysis, and profitability tracking by project and client.
-      </li>
-      <li>
-        <strong>Business Analyst — Italy / France</strong><br>
-        International projects focused on process improvement, KPI reporting, and operations support.
-      </li>
-    </ul>
+
+    <div class="card" onclick="window.open('https://www.mercadolibre.com.ar/', '_blank')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/MercadoLibre_logo.svg" class="logo">
+      <strong>Data Engineer — Mercado Libre (Argentina)</strong>
+      <p>Building pipelines and BI solutions for Logistic Operations - BigQuery | Cloud | Python</p>
+    </div>
+
+    <div class="card" onclick="window.open('https://www.pfsglobal.com/', '_blank')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/PFS_logo.png" class="logo">
+      <strong>Financial Analyst — PFS Global (United States)</strong>
+      <p>Financial analysis & revenue optimization across global operations - Power BI | SQL</p>
+    </div>
+
+    <div class="card" onclick="window.open('https://www.accenture.com/', '_blank')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Accenture-logo.svg" class="logo">
+      <strong>Financial Analyst — Accenture (Argentina)</strong>
+      <p>Budget control and project profitability reporting - Finance BI dashboards</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Highlighted Projects</h2>
+
+    <div class="card">
+      <strong>Logistics BI Automation</strong>
+      <p>End-to-end ETL pipelines delivering daily insights for regional warehouse operations ➜ BigQuery + Python</p>
+    </div>
+
+    <div class="card">
+      <strong>Financial KPI Dashboarding</strong>
+      <p>Created dynamic reporting for contract margin analysis and leadership decision-making ➜ Power BI + SQL</p>
+    </div>
+
+    <div class="card">
+      <strong>Data Quality Monitoring</strong>
+      <p>Automated validation rules reducing manual checks by 60% ➜ Python + SQL checks</p>
+    </div>
+
   </section>
 
   <section id="skills">
-    <h2>Technical Skills</h2>
-    <ul>
-      <li>SQL, Python, Data Modeling</li>
-      <li>ETL Pipelines & Automation</li>
-      <li>Power BI, Excel, Data Visualization</li>
-      <li>Business Intelligence & Finance Analytics</li>
-    </ul>
+    <h2>Skills</h2>
+    <p>Python | SQL | BigQuery | GCP | ETL | Power BI | Data Modeling | Cloud Architecture | Financial Analytics</p>
   </section>
 
   <section id="languages">
     <h2>Languages</h2>
-    <ul>
-      <li>Spanish — Native</li>
-      <li>English — Advanced</li>
-      <li>Italian — B2</li>
-      <li>French — B2</li>
-    </ul>
+    <div class="flags">
+      🇬🇧 English — C1<br>
+      🇫🇷 French — B2<br>
+      🇮🇹 Italian — B2<br>
+      🇧🇷 Portuguese — A2<br>
+      🇦🇷 Spanish — Native<br>
+    </div>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
-    <ul>
-      <li><strong>Email:</strong> santipaulin97@gmail.com</li>
-      <li><strong>LinkedIn:</strong> 
-        <a href="https://www.linkedin.com/in/santiagopaulin" target="_blank">
-          linkedin.com/in/santiagopaulin
-        </a>
-      </li>
-      <li><strong>GitHub:</strong> 
-        <a href="https://github.com/santipaulin97-sudo" target="_blank">
-          github.com/santipaulin97-sudo
-        </a>
-      </li>
-    </ul>
+    <p>📩 santipaulin97@gmail.com</p>
+    <p>🔗 <a href="https://linkedin.com/in/santiagopaulin" target="_blank" style="color:#0077B5;">LinkedIn Profile</a></p>
+    <p>💻 <a href="https://github.com/santipaulin97-sudo" target="_blank" style="color:#0077B5;">GitHub Profile</a></p>
   </section>
+
+  <footer>
+    © 2025 Santiago Paulin — All Rights Reserved
+  </footer>
+
+  <script>
+    const phrases = [
+      "Data Engineer",
+      "Business Intelligence",
+      "Financial Analyst",
+      "Data Analytics",
+      "Python & SQL Developer",
+      "Cloud Solutions"
+    ];
+
+    let i = 0, j = 0, current = "", isDeleting = false;
+
+    function typeEffect() {
+      const typing = document.getElementById("typingText");
+      current = phrases[i];
+      let displayed = current.substring(0, j);
+      typing.textContent = displayed;
+
+      if (!isDeleting && j < current.length) {
+        j++;
+        setTimeout(typeEffect, 120);
+      } else if (isDeleting && j > 0) {
+        j--;
+        setTimeout(typeEffect, 60);
+      } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) i = (i + 1) % phrases.length;
+        setTimeout(typeEffect, 900);
+      }
+    }
+    typeEffect();
+  </script>
 
 </body>
 </html>
-
