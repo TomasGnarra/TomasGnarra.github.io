@@ -89,7 +89,7 @@ p.small{ color:#9fb2b9; margin:8px 0 0 0; font-size:14px }
 .projects{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:12px }
 .project{
     padding:14px; border-radius:10px; background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
-    border:1px solid rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,f,0.02);
 }
 .project strong{ color:#dff; display:block; margin-bottom:6px }
 .project p{ color:#b3c8cd; font-size:14px; margin:0 }
@@ -98,10 +98,43 @@ p.small{ color:#9fb2b9; margin:8px 0 0 0; font-size:14px }
 .side {
     display:flex; flex-direction:column; gap:12px;
 }
-.skills-grid{ display:flex; flex-wrap:wrap; gap:8px }
-.skill-pill{
-    padding:8px 10px; background:rgba(255,255,255,0.02); border-radius:999px; color:#bfeee0; font-size:13px;
+
+/* --- ESTILOS EDITADOS PARA SKILLS CON LOGOS --- */
+/* (Reemplaza los .skills-grid y .skill-pill anteriores) */
+
+.skills-logo-grid {
+    display: grid;
+    /* Esto hace que se pongan en 3 columnas y se ajusten solas */
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 16px;
+    margin-top: 10px;
 }
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 8px;
+    background: var(--glass);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+.skill-item:hover {
+    background: rgba(255,255,255,0.05);
+    transform: translateY(-3px); /* Pequeño efecto al pasar el mouse */
+}
+.skill-item img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+.skill-item span {
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+}
+/* --- FIN DE ESTILOS EDITADOS --- */
+
 
 footer{ text-align:center; margin:30px 0; color:#7f9aa0; font-size:13px }
 
