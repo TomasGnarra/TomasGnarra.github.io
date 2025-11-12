@@ -33,6 +33,24 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
+/* --- ESTILOS PARA EL SUBTÍTULO DINÁMICO --- */
+.subtitle {
+  font-size: 1.2rem;
+  color: #a0a7b0; /* Color de texto secundario */
+  height: 30px; /* Alto fijo para que no "salte" */
+}
+/* El cursor | que parpadea */
+#subtitle-text::after {
+  content: '|';
+  animation: blink 1s infinite;
+  color: var(--accent);
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+/* --- FIN ESTILOS SUBTÍTULO --- */
+
+
 main {
   width: 90%;
   max-width: 1100px;
@@ -45,7 +63,7 @@ section {
 
 h2 {
   color: var(--accent);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem; /* Más espacio */
 }
 
 .cards {
@@ -53,45 +71,72 @@ h2 {
   gap: 1.5rem;
 }
 
+/* --- ESTILOS PARA LAS COLUMNAS --- */
+/* Por defecto, una columna (para experiencia) */
+.cards.single-column {
+  grid-template-columns: 1fr;
+}
+/* Para proyectos, 2 columnas */
+.cards.two-columns {
+  grid-template-columns: repeat(2, 1fr);
+}
+/* --- FIN ESTILOS COLUMNAS --- */
+
+
 .item-card {
   background: var(--card-bg);
   border-radius: 12px;
-  padding: 1.2rem;
+  padding: 1.5rem; /* Más padding */
   transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Borde sutil */
 }
 
 .item-card:hover {
-  transform: scale(1.02);
+  transform: translateY(-5px); /* Mejor efecto de hover */
   background-color: rgba(255, 255, 255, 0.07);
+  border-color: rgba(0, 230, 172, 0.5); /* Borde de acento */
 }
 
 .company-logo {
   height: 40px;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   opacity: 0.9;
 }
 
-.skills-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 0.5rem;
-  list-style: none;
-  padding: 0;
+/* --- ESTILOS PARA SKILLS CON LOGOS (RECOMENDADO) --- */
+.skills-logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
 }
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 1.5rem 1rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+.skill-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.07);
+}
+.skill-item img {
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+}
+.skill-item span {
+    font-size: 14px;
+    color: var(--text);
+    text-align: center;
+}
+/* --- FIN ESTILOS SKILLS --- */
 
-.skills-list li {
-  background: var(--card-bg);
-  padding: 0.8rem;
-  border-radius: 8px;
-  text-align: center;
-  transition: 0.3s;
-}
-
-.skills-list li:hover {
-  background: rgba(255, 255, 255, 0.07);
-  transform: scale(1.05);
-}
 
 footer {
   text-align: center;
@@ -107,4 +152,28 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+/* --- Responsive para las columnas --- */
+@media (max-width: 768px) {
+  /* En móviles, todo a 1 columna */
+  .cards.two-columns {
+    grid-template-columns: 1fr;
+  }
+  
+  .skills-logo-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  }
+  
+  header {
+    padding-top: 2.5rem;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
 }
