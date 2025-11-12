@@ -3,163 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Santiago Paulin | Data Engineer</title>
-
-  <!-- Fuente moderna -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+  <title>Santiago Paulin - Portfolio</title>
   <style>
-    * {
+    body {
+      font-family: "Poppins", sans-serif;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      color: #EAEAEA;
-      background-color: #0B0C10;
+      background: radial-gradient(circle at top left, #0a0a0a, #111);
+      color: #e5e5e5;
       overflow-x: hidden;
     }
-
     header {
       text-align: center;
-      padding: 100px 20px 60px 20px;
-      position: relative;
-      z-index: 2;
+      padding: 40px 0 10px 0;
+      color: #00e6ac;
     }
-
-    h1 {
-      font-size: 52px;
-      color: #66FCF1;
-      margin-bottom: 10px;
+    header h1 {
+      font-size: 2.5em;
+      margin: 0;
     }
-
-    .typing {
-      font-size: 22px;
-      color: #45A29E;
-      height: 32px;
+    header h3 {
+      font-weight: 400;
+      margin: 5px 0 20px 0;
+      color: #ccc;
     }
-
     nav {
-      text-align: center;
-      background: rgba(0,0,0,0.7);
-      padding: 12px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      border-bottom: 2px solid #45A29E;
-      backdrop-filter: blur(4px);
-    }
-
-    nav a {
-      margin: 0 18px;
-      color: #EAEAEA;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #66FCF1;
-    }
-
-    section {
-      padding: 60px 10%;
-      position: relative;
-      z-index: 2;
-    }
-
-    h2 {
-      color: #66FCF1;
-      font-size: 32px;
-      border-left: 6px solid #45A29E;
-      padding-left: 12px;
-      margin-bottom: 25px;
-    }
-
-    .card {
-      background: rgba(24, 26, 32, 0.9);
-      padding: 25px;
-      margin: 25px 0;
-      border-radius: 14px;
-      transition: 0.3s;
-      border: 1px solid #1F2833;
-      box-shadow: 0 0 8px rgba(102,252,241,0.2);
-    }
-
-    .card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 20px rgba(102,252,241,0.4);
-    }
-
-    .card strong {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 18px;
+      justify-content: center;
+      border-top: 1px solid #0d7377;
+      border-bottom: 1px solid #0d7377;
+      padding: 10px 0;
+      background-color: rgba(0,0,0,0.4);
     }
-
-    .card img.logo {
-      height: 28px;
-      width: auto;
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #ccc;
+      transition: 0.3s;
     }
-
+    nav a:hover {
+      color: #00ffd5;
+    }
+    section {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+    h2 {
+      border-left: 4px solid #00ffd5;
+      padding-left: 10px;
+      margin-bottom: 20px;
+      color: #00ffd5;
+    }
+    .experience-card, .project-card {
+      background-color: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      transition: 0.3s;
+    }
+    .experience-card:hover, .project-card:hover {
+      background-color: rgba(255,255,255,0.08);
+    }
+    .logo {
+      display: block;
+      margin: 0 auto 10px auto;
+      width: 60px;
+    }
+    .skills {
+      text-align: center;
+      font-size: 1.5em;
+      margin-top: 40px;
+    }
+    .skills img {
+      width: 40px;
+      margin: 10px;
+      filter: brightness(0) invert(1);
+    }
     footer {
       text-align: center;
-      padding: 30px;
-      background: #000;
-      color: #888;
-      margin-top: 60px;
-      font-size: 14px;
-    }
-
-    /* Fondo animado tipo red de nodos */
-    canvas#network-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 20% 20%, #0B0C10 40%, #1F2833);
-    }
-
-    /* Skills grid */
-    .skills-logos {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: center;
-      margin-top: 15px;
-    }
-
-    .skills-logos img {
-      height: 45px;
-      transition: transform 0.3s;
-    }
-
-    .skills-logos img:hover {
-      transform: scale(1.15);
-    }
-
-    a {
-      color: #66FCF1;
-    }
-
-    a:hover {
-      text-decoration: underline;
+      margin: 40px 0 20px 0;
+      color: #777;
+      font-size: 0.9em;
     }
   </style>
 </head>
-
 <body>
-
-  <canvas id="network-bg"></canvas>
-
   <header>
     <h1>Santiago Paulin</h1>
-    <div class="typing" id="typingText"></div>
+    <h3>Financial & Data Engineer</h3>
   </header>
 
   <nav>
@@ -167,15 +99,14 @@
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
-    <a href="#languages">Languages</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <section id="about">
     <h2>About Me</h2>
     <p>
-      I'm a data-driven professional with international experience in the United States, Italy, France, and Argentina.  
-      Currently working as a Data Engineer at Mercado Libre with a strong background in financial analytics, acquired at Accenture and PFS Global.  
+      I'm a data-driven professional with international experience in the United States, Italy, France, and Argentina. 
+      Currently working as a Data Engineer at Mercado Libre with a strong background in financial analytics, acquired at Accenture and PFS Global. 
       I design scalable data solutions that turn business challenges into impactful insights.
     </p>
   </section>
@@ -183,18 +114,21 @@
   <section id="experience">
     <h2>Professional Experience</h2>
 
-    <div class="card" onclick="window.open('https://www.mercadolibre.com.ar/', '_blank')">
-      <strong><img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/MercadoLibre_logo.svg" class="logo"> Data Engineer — Mercado Libre</strong>
+    <div class="experience-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/MercadoLibre_Logo.svg" alt="Mercado Libre" class="logo">
+      <strong>Data Engineer — Mercado Libre</strong>
       <p>Building pipelines and BI solutions for Logistic Operations — BigQuery | Cloud | Python</p>
     </div>
 
-    <div class="card" onclick="window.open('https://www.pfsglobal.com/', '_blank')">
-      <strong><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/PFS_logo.png" class="logo"> Financial Analyst — PFS Global</strong>
+    <div class="experience-card">
+      <img src="https://www.pfsglobal.net/images/logo.svg" alt="PFS Global" class="logo">
+      <strong>Financial Analyst — PFS Global</strong>
       <p>Financial analysis & revenue optimization across global operations — Power BI | SQL</p>
     </div>
 
-    <div class="card" onclick="window.open('https://www.accenture.com/', '_blank')">
-      <strong><img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Accenture-logo.svg" class="logo"> Financial Analyst — Accenture</strong>
+    <div class="experience-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Accenture.svg" alt="Accenture" class="logo">
+      <strong>Financial Analyst — Accenture</strong>
       <p>Budget control and project profitability reporting — Finance BI dashboards</p>
     </div>
   </section>
@@ -202,127 +136,47 @@
   <section id="projects">
     <h2>Highlighted Projects</h2>
 
-    <div class="card">
-      <strong><img src="https://cdn-icons-png.flaticon.com/512/3448/3448618.png" class="logo"> Logistics BI Automation</strong>
-      <p>End-to-end ETL pipelines delivering daily insights for warehouse operations ➜ BigQuery + Python</p>
+    <div class="project-card">
+      <strong>Logistics BI Automation</strong>
+      <p>End-to-end ETL pipelines delivering daily insights for warehouse operations — BigQuery + Python</p>
     </div>
 
-    <div class="card">
-      <strong><img src="https://cdn-icons-png.flaticon.com/512/4149/4149727.png" class="logo"> Financial KPI Dashboard</strong>
-      <p>Dynamic reporting for contract margin analysis and decision-making ➜ Power BI + SQL</p>
+    <div class="project-card">
+      <strong>Financial KPI Dashboard</strong>
+      <p>Dynamic reporting for contract margin analysis and decision-making — Power BI + SQL</p>
     </div>
 
-    <div class="card">
-      <strong><img src="https://cdn-icons-png.flaticon.com/512/3190/3190621.png" class="logo"> Data Quality Monitoring</strong>
-      <p>Automated validation rules reducing manual checks by 60% ➜ Python + SQL checks</p>
+    <div class="project-card">
+      <strong>Data Quality Monitoring</strong>
+      <p>Automated validation rules reducing manual checks by 60% — Python + SQL checks</p>
+    </div>
+
+    <div class="project-card">
+      <strong>Travel Bot AI Assistant</strong>
+      <p>Automated travel assistant integrating <b>Perplexity AI</b>, <b>Skyscanner API</b>, and <b>Flights API</b> to help travel agents find and share flight options via <b>WhatsApp</b>. Designed to reduce search time and improve customer interactions.</p>
+    </div>
+
+    <div class="project-card">
+      <strong>Dollar Sentiment Report</strong>
+      <p>Python-based pipeline that scrapes top <b>Argentine financial news sites</b>, analyzes sentiment about the <b>USD exchange rate</b>, and delivers a daily <b>report predicting dollar trends</b> using natural language processing.</p>
     </div>
   </section>
 
   <section id="skills">
     <h2>Skills</h2>
-    <div class="skills-logos">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" />
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" />
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" />
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" />
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/powerbi/powerbi-original.svg" />
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" />
+    <div class="skills">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" alt="SQL">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/powerbi/powerbi-original.svg" alt="Power BI">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
     </div>
   </section>
 
-  <section id="languages">
-    <h2>Languages</h2>
-    <p>🇬🇧 English — C1<br>🇫🇷 French — B2<br>🇮🇹 Italian — B2<br>🇧🇷 Portuguese — A2<br>🇦🇷 Spanish — Native</p>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>📩 santipaulin97@gmail.com</p>
-    <p>🔗 <a href="https://linkedin.com/in/santiagopaulin" target="_blank">LinkedIn</a></p>
-    <p>💻 <a href="https://github.com/santipaulin97-sudo" target="_blank">GitHub</a></p>
-  </section>
-
-  <footer>© 2025 Santiago Paulin — All Rights Reserved</footer>
-
-  <script>
-    // Typing animation
-    const phrases = [
-      "Data Engineer",
-      "Financial Analytics",
-      "Business Intelligence",
-      "ETL & Cloud Solutions",
-      "Python & SQL Developer"
-    ];
-    let i = 0, j = 0, isDeleting = false;
-    function typeEffect() {
-      const typing = document.getElementById("typingText");
-      let current = phrases[i];
-      let displayed = current.substring(0, j);
-      typing.textContent = displayed;
-      if (!isDeleting && j < current.length) j++;
-      else if (isDeleting && j > 0) j--;
-      else if (!isDeleting && j === current.length) isDeleting = true;
-      else {
-        isDeleting = false;
-        i = (i + 1) % phrases.length;
-      }
-      setTimeout(typeEffect, isDeleting ? 60 : 120);
-    }
-    typeEffect();
-
-    // Fondo de red de nodos animada
-    const canvas = document.getElementById("network-bg");
-    const ctx = canvas.getContext("2d");
-    let nodes = [];
-    const nodeCount = 70;
-
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener("resize", resize);
-    resize();
-
-    for (let i = 0; i < nodeCount; i++) {
-      nodes.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5
-      });
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#45A29E";
-      nodes.forEach(n => {
-        n.x += n.vx; n.y += n.vy;
-        if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
-        if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
-        ctx.fill();
-      });
-      for (let i = 0; i < nodeCount; i++) {
-        for (let j = i + 1; j < nodeCount; j++) {
-          const dx = nodes[i].x - nodes[j].x;
-          const dy = nodes[i].y - nodes[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.strokeStyle = "rgba(102,252,241," + (1 - dist / 120) + ")";
-            ctx.lineWidth = 0.3;
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-      requestAnimationFrame(draw);
-    }
-    draw();
-  </script>
+  <footer>
+    © 2025 Santiago Paulin — Portfolio
+  </footer>
 </body>
 </html>
-
 
