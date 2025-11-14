@@ -3,111 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Santiago Paulin — Data Engineer Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <title>Santiago Paulin — Data Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <canvas id="background"></canvas>
+  <canvas id="network-bg"></canvas>
 
   <header>
-    <h1>Santiago Paulin</h1>
-    <p class="subtitle">
-      <span id="subtitle-text"></span>
-    </p>
+    <h1 class="title">Santiago Paulin</h1>
+    <p class="subtitle"><span id="subtitle-text"></span></p>
   </header>
 
   <main>
-    <section id="about">
+    <section>
       <h2>About Me</h2>
-      <p>
-        Passionate about data engineering, analytics and automation. I love building efficient ETL pipelines, visual dashboards and AI-integrated solutions that bring insights to life.
+      <p class="about-text">
+        Data Engineer focused on automation, BI, analytics and scalable data pipelines. 
+        I build efficient ETLs, cloud workflows and real-time insights using Python, BigQuery and modern data stacks.
       </p>
     </section>
 
-    <section id="experience">
+    <section>
       <h2>Experience</h2>
-      <div class="cards single-column">
-        <div class="item-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/MercadoLibre_logo.svg" alt="Mercado Libre" class="company-logo">
-          <strong>Data Engineer — Mercado Libre</strong>
-          <p>Automation of warehouse financial reporting and ETL pipelines in GCP using BigQuery and Python.</p>
+      <div class="cards">
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/MercadoLibre_logo.svg" class="card-logo">
+          <h3>Data Engineer — Mercado Libre</h3>
+          <p>Financial automation, warehouse ETLs, BigQuery modeling and Python orchestration.</p>
         </div>
-        <div class="item-card">
-          <img src="httpsT://www.pfsglobal.com/wp-content/uploads/2020/06/logo-pfs-global-1.png" alt="PFS Global" class="company-logo">
-          <strong>Financial Analyst — PFS Global</strong>
-          <p>Created Power BI dashboards and SQL models to track margin and operational KPIs across clients.</p>
+
+        <div class="card">
+          <img src="https://www.pfsglobal.com/wp-content/uploads/2020/06/logo-pfs-global-1.png" class="card-logo">
+          <h3>Financial Analyst — PFS Global</h3>
+          <p>SQL/BI reporting, dashboards, client KPIs, margins and operational analytics.</p>
         </div>
-        <div class="item-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Accenture.svg" alt="Accenture" class="company-logo">
-          <strong>Financial Analyst — Accenture</strong>
-          <p>Worked on financial planning and project reporting for US-based operations using Excel automation and macros.</p>
+
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Accenture.svg" class="card-logo">
+          <h3>Financial Analyst — Accenture</h3>
+          <p>Project reporting, automation and forecasting for US Finance Operations.</p>
         </div>
       </div>
     </section>
 
-    <section id="projects">
+    <section>
       <h2>Projects</h2>
       <div class="cards two-columns">
-        <div class="item-card">
-          <strong>ETL Performance Monitor</strong>
-          <p>Developed an automated dashboard to track ETL pipeline runtime differences and detect anomalies.</p>
+        <div class="card">
+          <h3>ETL Performance Monitor</h3>
+          <p>Analytics for pipeline runtime metrics and anomaly detection.</p>
         </div>
-        <div class="item-card">
-          <strong>Travel Bot (Perplexity + Skyscanner API)</strong>
-          <p>AI agent via WhatsApp that searches for flights using Skyscanner and Flights API, sending agents quick booking links.</p>
+        <div class="card">
+          <h3>Travel Bot (Perplexity + Skyscanner)</h3>
+          <p>WhatsApp AI Agent searching real-time flights with API integration.</p>
         </div>
-        <div class="item-card">
-          <strong>Dollar Sentiment Report</strong>
-          <p>Automated report analyzing Argentine news sentiment to predict USD daily trends.</p>
+        <div class="card">
+          <h3>Dollar Sentiment Report</h3>
+          <p>News sentiment → USD movement predictions using NLP.</p>
         </div>
-         <div class="item-card">
-          <strong>Logistics BI Automation</strong>
-          <p>End-to-end ETL pipelines for warehouse operations — BigQuery · Python</p>
+        <div class="card">
+          <h3>Logistics BI Automation</h3>
+          <p>End-to-end BigQuery ETLs for warehouse operations.</p>
         </div>
       </div>
     </section>
 
-    <section id="skills">
+    <section>
       <h2>Skills</h2>
-      <div class="skills-logo-grid">
-         <div class="skill-item">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python logo">
-            <span>Python</span>
-        </div>
-        <div class="skill-item">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Google-BigQuery-Logo.svg" alt="BigQuery logo">
-            <span>BigQuery</span>
-        </div>
-        <div class="skill-item">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Microsoft_Power_BI.svg" alt="Power BI logo">
-            <span>Power BI</span>
-        </div>
-        <div class="skill-item">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg" alt="SQL logo">
-            <span>SQL</span>
-        </div>
-        <div class="skill-item">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_Cloud_logo.svg" alt="Cloud logo">
-            <span>Cloud</span>
-        </div>
-         <div class="skill-item">
-            <img src="https://static.thenounproject.com/png/1126305-200.png" alt="ETL logo" style="filter: invert(1) brightness(0.8);">
-            <span>ETL</span>
-        </div>
+      <div class="skills">
+        <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg"><span>Python</span></div>
+        <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Google-BigQuery-Logo.svg"><span>BigQuery</span></div>
+        <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Microsoft_Power_BI.svg"><span>Power BI</span></div>
+        <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg"><span>SQL</span></div>
+        <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_Cloud_logo.svg"><span>GCP</span></div>
+        <div class="skill"><img src="https://static.thenounproject.com/png/1126305-200.png"><span>ETL</span></div>
       </div>
     </section>
 
-    <section id="contact">
+    <section>
       <h2>Contact</h2>
       <p>📧 <a href="mailto:santiago.paulin@example.com">santiago.paulin@example.com</a></p>
-      <p>💼 <a href="https://www.linkedin.com/in/santiagopaulin" target="_blank">LinkedIn Profile</a></p>
+      <p>💼 <a href="https://www.linkedin.com/in/santiagopaulin" target="_blank">LinkedIn</a></p>
     </section>
   </main>
 
-  <footer>
-    <p>© 2025 Santiago Paulin | Data Engineer</p>
-  </footer>
+  <footer>© 2025 Santiago Paulin</footer>
 
   <script src="script.js"></script>
 </body>
