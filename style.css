@@ -1,55 +1,53 @@
 :root {
-  --bg: #0a0f1a;
-  --card-bg: rgba(255, 255, 255, 0.05);
+  --bg: #0b0f19;
+  --bg-gradient: radial-gradient(circle at 20% 20%, #0d1224, #05070d 80%);
   --accent: #00e6ac;
-  --text: #e0e0e0;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --text: #e9e9e9;
 }
 
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background-color: var(--bg);
+  background: var(--bg-gradient);
   color: var(--text);
   overflow-x: hidden;
 }
 
 canvas {
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
+  inset: 0;
   width: 100%;
   height: 100%;
+  z-index: -1;
+  opacity: 0.8;
 }
 
 header {
   text-align: center;
-  padding: 4rem 1rem 2rem;
+  padding: 4rem 1rem 3rem;
 }
 
-h1 {
+.title {
+  font-size: 2.8rem;
+  font-weight: 700;
   color: var(--accent);
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
+  text-shadow: 0 0 12px rgba(0, 230, 172, 0.4);
 }
 
-/* --- ESTILOS PARA EL SUBTÍTULO DINÁMICO --- */
 .subtitle {
-  font-size: 1.2rem;
-  color: #a0a7b0; /* Color de texto secundario */
-  height: 30px; /* Alto fijo para que no "salte" */
+  font-size: 1.3rem;
+  opacity: 0.8;
+  height: 32px;
 }
-/* El cursor | que parpadea */
+
 #subtitle-text::after {
   content: '|';
   animation: blink 1s infinite;
   color: var(--accent);
 }
-@keyframes blink {
-  50% { opacity: 0; }
-}
-/* --- FIN ESTILOS SUBTÍTULO --- */
-
+@keyframes blink { 50% { opacity: 0; } }
 
 main {
   width: 90%;
@@ -57,13 +55,15 @@ main {
   margin: auto;
 }
 
-section {
-  margin-bottom: 3rem;
-}
-
 h2 {
   color: var(--accent);
-  margin-bottom: 1.5rem; /* Más espacio */
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+  font-weight: 600;
+}
+
+.about-text {
+  max-width: 700px;
 }
 
 .cards {
@@ -71,109 +71,76 @@ h2 {
   gap: 1.5rem;
 }
 
-/* --- ESTILOS PARA LAS COLUMNAS --- */
-/* Por defecto, una columna (para experiencia) */
-.cards.single-column {
-  grid-template-columns: 1fr;
-}
-/* Para proyectos, 2 columnas */
 .cards.two-columns {
   grid-template-columns: repeat(2, 1fr);
 }
-/* --- FIN ESTILOS COLUMNAS --- */
 
-
-.item-card {
+.card {
   background: var(--card-bg);
-  border-radius: 12px;
-  padding: 1.5rem; /* Más padding */
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.08); /* Borde sutil */
+  border: 1px solid var(--card-border);
+  padding: 1.5rem;
+  border-radius: 14px;
+  backdrop-filter: blur(4px);
+  transition: 0.25s ease;
 }
 
-.item-card:hover {
-  transform: translateY(-5px); /* Mejor efecto de hover */
-  background-color: rgba(255, 255, 255, 0.07);
-  border-color: rgba(0, 230, 172, 0.5); /* Borde de acento */
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.08);
 }
 
-.company-logo {
+.card-logo {
   height: 40px;
-  display: block;
   margin-bottom: 12px;
   opacity: 0.9;
 }
 
-/* --- ESTILOS PARA SKILLS CON LOGOS (RECOMENDADO) --- */
-.skills-logo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 1.3rem;
+  margin-top: 1.5rem;
 }
-.skill-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    padding: 1.5rem 1rem;
-    background: var(--card-bg);
-    border-radius: 12px;
-    transition: all 0.3s ease;
-}
-.skill-item:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.07);
-}
-.skill-item img {
-    height: 40px;
-    width: 40px;
-    object-fit: contain;
-}
-.skill-item span {
-    font-size: 14px;
-    color: var(--text);
-    text-align: center;
-}
-/* --- FIN ESTILOS SKILLS --- */
 
+.skill {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 1.3rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: 0.25s;
+}
+
+.skill:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.skill img {
+  height: 42px;
+  margin-bottom: 8px;
+  filter: brightness(0.85);
+}
 
 footer {
   text-align: center;
-  padding: 1.5rem;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  color: #aaa;
+  padding: 2rem;
+  opacity: 0.6;
+  font-size: 0.9rem;
 }
 
 a {
   color: var(--accent);
   text-decoration: none;
 }
+a:hover { text-decoration: underline; }
 
-a:hover {
-  text-decoration: underline;
-}
-
-/* --- Responsive para las columnas --- */
 @media (max-width: 768px) {
-  /* En móviles, todo a 1 columna */
   .cards.two-columns {
     grid-template-columns: 1fr;
   }
-  
-  .skills-logo-grid {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  }
-  
-  header {
-    padding-top: 2.5rem;
-  }
-  
-  h1 {
-    font-size: 1.8rem;
-  }
-  
-  .subtitle {
-    font-size: 1rem;
+  .title {
+    font-size: 2.2rem;
   }
 }
