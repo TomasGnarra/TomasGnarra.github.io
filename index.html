@@ -3,104 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Santiago Paulin — Data Engineer</title>
+  <title>Santiago Paulin — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <!-- Background tech dots -->
+
+  <!-- ANIMATED BACKGROUND CANVAS -->
+  <canvas id="network"></canvas>
+
+  <!-- BLUE TECH GLOW BACKGROUND -->
   <div class="tech-bg"></div>
 
   <!-- NAVBAR -->
-  <nav>
-    <div class="logo">Santiago Paulin</div>
+  <nav class="navbar">
+    <div class="logo">SP</div>
     <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#stack">Tech Stack</a></li>
-      <li><a href="#experience">Experience</a></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Hi, I'm <span>Santiago Paulin</span></h1>
+  <!-- MAIN HERO SECTION -->
+  <section id="home" class="hero">
+    <h1>Hi, I'm <span class="highlight">Santiago Paulin</span></h1>
+    <h2><span id="subtitle">Data Engineer</span></h2>
+    <p>
+      Data Engineer • Financial Data Analyst • Automation • Python • SQL • AWS • PySpark • Power BI
+    </p>
 
-    <h2>
-      <span id="dynamic-text">Data Engineer</span>
-    </h2>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <h2 class="section-title">About Me</h2>
-
-    <div class="about-container">
-      <p>
-        I'm a Data Engineer focused on building reliable data pipelines, automation workflows,
-        and scalable analytics solutions.
-      </p>
-      <p>
-        Experience in e-commerce logistics, finance reporting, anomaly detection,
-        and cloud data pipelines.
-      </p>
+    <!-- LOGOS SECTION -->
+    <div class="logos">
+      <img src="imgs/python.png" alt="Python">
+      <img src="imgs/sql.png" alt="SQL">
+      <img src="imgs/aws.png" alt="AWS">
+      <img src="imgs/pbi.png" alt="Power BI">
+      <img src="imgs/pyspark.png" alt="PySpark">
+      <img src="imgs/git.png" alt="Git">
     </div>
   </section>
-
-  <!-- TECH STACK -->
-  <section id="stack">
-    <h2 class="section-title">Tech Stack</h2>
-
-    <div class="tech-grid">
-      <div class="tech-item"><h3>Python</h3></div>
-      <div class="tech-item"><h3>SQL</h3></div>
-      <div class="tech-item"><h3>BigQuery</h3></div>
-      <div class="tech-item"><h3>PostgreSQL</h3></div>
-      <div class="tech-item"><h3>Airflow</h3></div>
-      <div class="tech-item"><h3>Dataform</h3></div>
-      <div class="tech-item"><h3>Power BI</h3></div>
-      <div class="tech-item"><h3>Looker</h3></div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <h2 class="section-title">Experience</h2>
-
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="company">Mercado Libre — Data Engineer</div>
-        <div class="role">Shipping & logistics analytics</div>
-        <div class="time">2024 - Present</div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="company">PFS Global — Financial Analyst</div>
-        <div class="role">Margin analysis • Billing automation</div>
-        <div class="time">2022 - 2023</div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="company">Accenture — Financial Analyst</div>
-        <div class="role">Reporting • Data workflows</div>
-        <div class="time">2021 - 2022</div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2 class="section-title">Contact</h2>
-
-    <div class="about-container">
-      <p>Email: <strong>santiagoa17@gmail.com</strong></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/santipaulin" target="_blank">/in/santipaulin</a></p>
-    </div>
-  </section>
-
-  <footer>© 2025 Santiago Paulin</footer>
 
   <script src="app.js"></script>
 </body>
