@@ -1,3 +1,7 @@
+/* ================================
+   ANIMATED NETWORK BACKGROUND
+================================ */
+
 const canvas = document.getElementById("network");
 const ctx = canvas.getContext("2d");
 
@@ -7,21 +11,28 @@ function resize() {
   w = canvas.width = window.innerWidth;
   h = canvas.height = window.innerHeight;
 
-  nodes = Array(140).fill().map(() => ({
+  const totalNodes = Math.min(160, Math.floor(w * h / 9000));
+
+  nodes = Array(totalNodes).fill().map(() => ({
     x: Math.random() * w,
     y: Math.random() * h,
-    vx: (Math.random() - 0.5) * 0.4,
-    vy: (Math.random() - 0.5) * 0.4
+    vx: (Math.random() - 0.5) * 0.25,
+    vy: (Math.random() - 0.5) * 0.25
   }));
 }
 
 resize();
-window.onresize = resize;
+window.addEventListener("resize", resize);
 
 function draw() {
+  if (document.hidden) {
+    requestAnimationFrame(draw);
+    return;
+  }
+
   ctx.clearRect(0, 0, w, h);
 
-  // Dibujar nodos
+  // Draw nodes
   for (let n of nodes) {
     n.x += n.vx;
     n.y += n.vy;
@@ -31,25 +42,27 @@ function draw() {
 
     ctx.beginPath();
     ctx.arc(n.x, n.y, 2.2, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(0,255,213,0.9)";
-    ctx.shadowBlur = 12;
-    ctx.shadowColor = "rgba(0,255,213,0.5)";
+    ctx.fillStyle = "rgba(0,255,213,0.85)";
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = "rgba(0,255,213,0.4)";
     ctx.fill();
     ctx.shadowBlur = 0;
   }
 
-  // Dibujar líneas de conexión
+  // Draw lines
   for (let i = 0; i < nodes.length; i++) {
     for (let j = i + 1; j < nodes.length; j++) {
       const dx = nodes[i].x - nodes[j].x;
       const dy = nodes[i].y - nodes[j].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
+      const dist = Math.hypot(dx, dy);
 
-      if (dist < 130) {
+      if (dist < 140) {
+        const opacity = 1 - dist / 140;
+
         ctx.beginPath();
         ctx.moveTo(nodes[i].x, nodes[i].y);
         ctx.lineTo(nodes[j].x, nodes[j].y);
-        ctx.strokeStyle = "rgba(0,255,213,0.06)";
+        ctx.strokeStyle = `rgba(0,255,213,${opacity * 0.08})`;
         ctx.lineWidth = 1;
         ctx.stroke();
       }
@@ -61,29 +74,40 @@ function draw() {
 
 draw();
 
-/* Typing effect */
-const words = ["Data Engineer", "Python Developer", "BigQuery & SQL", "ETL Automation"];
-let i = 0, j = 0, del = false;
+/* ================================
+       HERO TYPING EFFECT
+================================ */
+
+const roles = [
+  "Data Engineer",
+  "Python Developer",
+  "ETL Automation Specialist",
+  "BigQuery & SQL Expert",
+  "Cloud & Pipelines Engineer"
+];
+
+let i = 0, j = 0, deleting = false;
+
 const subtitle = document.getElementById("subtitle");
 
 function type() {
-  let word = words[i];
-  subtitle.textContent = word.substring(0, j);
+  const current = roles[i];
+  subtitle.textContent = current.substring(0, j);
 
-  if (!del && j === word.length) {
-    del = true;
-    setTimeout(type, 1500);
+  if (!deleting && j === current.length) {
+    deleting = true;
+    setTimeout(type, 1300);
     return;
   }
 
-  if (del && j === 0) {
-    del = false;
-    i = (i + 1) % words.length;
+  if (deleting && j === 0) {
+    deleting = false;
+    i = (i + 1) % roles.length;
   }
 
-  j += del ? -1 : 1;
-  setTimeout(type, del ? 40 : 80);
+  j += deleting ? -1 : 1;
+
+  setTimeout(type, deleting ? 45 : 80);
 }
 
 type();
-
