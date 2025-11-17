@@ -1,103 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Santiago Paulin — Data Engineer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
+  <nav class="navbar">
+    <div class="logo">Santiago Paulin</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#stack">Tech Stack</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-  <!-- Fondo animado tipo network tech -->
-  <canvas id="network"></canvas>
+  <section class="hero">
+    <h1>Hi, I'm <span>Santiago Paulin</span></h1>
+    <h2 class="subtitle">Data Engineer • Financial Data Analyst • Automation</h2>
+    <div class="hero-buttons">
+      <a href="https://www.linkedin.com/in/santipaulin" target="_blank" class="btn-primary">LinkedIn</a>
+      <a href="#contact" class="btn-secondary">Contact Me</a>
+    </div>
+  </section>
 
-  <header>
-    <h1>Santiago Paulin</h1>
-    <p class="subtitle"><span id="subtitle"></span></p>
-  </header>
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+      I'm a Data Engineer focused on building reliable data pipelines, automation workflows, and scalable analytics solutions.
+      Experience in e-commerce logistics, finance reporting, anomaly detection, and cloud data pipelines.
+    </p>
+  </section>
 
-  <main>
+  <section id="stack" class="stack">
+    <h2>Tech Stack</h2>
+    <div class="stack-grid">
+      <div class="stack-card"><h3>Languages</h3><p>Python, SQL</p></div>
+      <div class="stack-card"><h3>Data & Cloud</h3><p>BigQuery, PostgreSQL, SQL Server</p></div>
+      <div class="stack-card"><h3>Automation</h3><p>Airflow, Dataform, Workflows</p></div>
+      <div class="stack-card"><h3>Visualization</h3><p>Power BI, Looker, Data Studio</p></div>
+      <div class="stack-card"><h3>Other</h3><p>Git, VS Code</p></div>
+    </div>
+  </section>
 
-    <!-- ABOUT -->
-    <section>
-      <h2>About Me</h2>
-      <p class="about">
-        Data Engineer specialized in cloud pipelines, ETLs, automations and large-scale analytics.
-        I design scalable workflows using Python, BigQuery, SQL, GCP and modern data engineering best practices.
-      </p>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section>
-      <h2>Experience</h2>
-      <div class="cards">
-        <div class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/MercadoLibre_logo.svg" class="logo">
-          <h3>Data Engineer — Mercado Libre</h3>
-          <p>Warehouse analytics, automations, BigQuery pipelines, Python ETLs.</p>
-        </div>
-
-        <div class="card">
-          <img src="https://www.pfsglobal.com/wp-content/uploads/2020/06/logo-pfs-global-1.png" class="logo">
-          <h3>Financial Analyst — PFS Global</h3>
-          <p>SQL dashboards, KPIs, margins, cost analytics for US-based clients.</p>
-        </div>
-
-        <div class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Accenture.svg" class="logo">
-          <h3>Financial Analyst — Accenture</h3>
-          <p>Forecasting, automation, BI reporting for North America Finance.</p>
+  <section id="experience" class="experience">
+    <h2>Experience</h2>
+    <div class="timeline">
+      <div class="entry">
+        <div class="dot"></div>
+        <div class="content">
+          <h3>Mercado Libre — Data Engineer</h3>
+          <p>2024 - Present</p>
+          <p>Operational analytics, shipping & logistics automation, anomaly detection.</p>
         </div>
       </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section>
-      <h2>Portfolio</h2>
-      <div class="cards two">
-        <div class="card"><h3>ETL Performance Monitor</h3><p>Real-time runtime analytics, anomaly alerts.</p></div>
-        <div class="card"><h3>Travel Bot API</h3><p>WhatsApp AI agent integrated with Skyscanner.</p></div>
-        <div class="card"><h3>USD Sentiment Analysis</h3><p>NLP model predicting short-term dólar variations.</p></div>
-        <div class="card"><h3>Logistics BI Automation</h3><p>BigQuery pipelines for warehouse operations.</p></div>
+      <div class="entry">
+        <div class="dot"></div>
+        <div class="content">
+          <h3>PFS Global — Financial Analyst</h3>
+          <p>2022 - 2023</p>
+          <p>Financial reporting, margin analysis, billing automation.</p>
+        </div>
       </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section>
-      <h2>Tech Stack</h2>
-      <div class="skills">
-        <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg"><span>Python</span></div>
-        <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Google-BigQuery-Logo.svg"><span>BigQuery</span></div>
-        <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Microsoft_Power_BI.svg"><span>Power BI</span></div>
-        <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg"><span>SQL</span></div>
-        <div class="skill"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_Cloud_logo.svg"><span>GCP</span></div>
-        <div class="skill"><img src="https://static.thenounproject.com/png/1126305-200.png"><span>ETL</span></div>
+      <div class="entry">
+        <div class="dot"></div>
+        <div class="content">
+          <h3>Accenture — Financial Analyst</h3>
+          <p>2021 - 2022</p>
+          <p>Global operations, internal reporting, data workflows.</p>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- LANGUAGES -->
-    <section>
-      <h2>Languages</h2>
-      <p>🇦🇷 Spanish — Native</p>
-      <p>🇺🇸 English — Advanced</p>
-      <p>🇮🇹 Italian — B2</p>
-      <p>🇫🇷 French — Intermediate</p>
-    </section>
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>Email: santiagoa17@gmail.com</p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/santipaulin" target="_blank">/in/santipaulin</a></p>
+  </section>
 
-    <!-- CONTACT -->
-    <section>
-      <h2>Contact</h2>
-      <p>📧 <a href="mailto:santiagopaulin@gmail.com">santiagopaulin@gmail.com</a></p>
-      <p>💼 <a href="https://www.linkedin.com/in/santiagopaulin" target="_blank">LinkedIn</a></p>
-    </section>
-
-  </main>
-
-  <footer>© 2025 Santiago Paulin</footer>
-
-  <script src="script.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
 
