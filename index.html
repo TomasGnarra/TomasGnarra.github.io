@@ -4,10 +4,81 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Santiago Paulin | Data Engineer</title>
-  <link rel="stylesheet" href="style.css" />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-color: #0a192f;
+      --text-primary: #e6f1ff;
+      --text-secondary: #8892b0;
+      --accent: #64ffda;
+      --panel-bg: rgba(17, 34, 64, 0.85);
+      --panel-border: rgba(255, 255, 255, 0.1);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { background: var(--bg-color); color: var(--text-primary); min-height: 100vh; display: flex; flex-direction: column; align-items: center; overflow-x: hidden; }
+    canvas#network { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+    
+    /* LAYOUT */
+    .dashboard { display: grid; grid-template-columns: 350px 1fr; gap: 30px; width: 100%; max-width: 1250px; margin: 40px auto; padding: 0 20px; align-items: start; }
+    .glass-panel { background: var(--panel-bg); backdrop-filter: blur(12px); border: 1px solid var(--panel-border); border-radius: 12px; padding: 25px; margin-bottom: 20px; box-shadow: 0 10px 30px -10px rgba(2,12,27,0.7); }
+    .sidebar { position: sticky; top: 20px; }
+
+    /* PROFILE */
+    .name { font-size: 2rem; font-weight: 700; color: #fff; line-height: 1.1; }
+    .role { font-size: 1.1rem; color: var(--accent); font-family: 'Fira Code', monospace; margin: 5px 0 15px 0; }
+    .badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 15px; }
+    .badges span { background: rgba(100, 255, 218, 0.1); color: var(--accent); font-size: 0.7rem; padding: 4px 8px; border-radius: 15px; border: 1px solid rgba(100,255,218,0.3); }
+    .bio { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px; }
+
+    /* BOTONES SOCIALES */
+    .social-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-social { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px; background: transparent; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; border-radius: 6px; font-family: 'Fira Code', monospace; font-size: 0.85rem; transition: 0.3s; min-width: 100px; }
+    .btn-social:hover { background: rgba(100, 255, 218, 0.1); transform: translateY(-2px); }
+    .btn-cv { background: rgba(100, 255, 218, 0.1); border-color: var(--accent); color: #fff; } 
+    .btn-cv:hover { background: var(--accent); color: var(--bg-color); }
+
+    /* LANGS & TECH */
+    .lang-list { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+    .lang-item { display: flex; align-items: center; gap: 12px; padding: 6px; background: rgba(255,255,255,0.03); border-radius: 6px; }
+    .lang-item img { width: 24px; height: auto; border-radius: 2px; }
+    .lang-item strong { font-size: 0.85rem; color: #fff; } .lang-item span { font-size: 0.7rem; color: var(--text-secondary); font-family: 'Fira Code', monospace; }
+    
+    .tech-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+    .tech-icon { background: rgba(255,255,255,0.05); border-radius: 8px; padding: 8px; display: flex; align-items: center; justify-content: center; transition: 0.3s; border: 1px solid transparent; aspect-ratio: 1; }
+    .tech-icon img { width: 32px !important; height: 32px !important; object-fit: contain; }
+    .tech-icon:hover { background: rgba(255,255,255,0.1); border-color: var(--accent); transform: translateY(-3px); }
+
+    /* CONTENT */
+    .section-title { font-size: 1.4rem; color: #fff; margin-bottom: 20px; display: flex; align-items: center; }
+    .section-title span { color: var(--accent); font-family: 'Fira Code', monospace; margin-right: 10px; }
+    
+    .job-card { padding: 20px; margin-bottom: 15px; transition: 0.3s; border-left: 3px solid transparent; }
+    .job-card:hover { border-left-color: var(--accent); transform: translateX(5px); }
+    .job-header h4 { font-size: 1rem; color: #e6f1ff; } .highlight { color: var(--accent); font-weight: 600; }
+    .date { font-family: 'Fira Code', monospace; font-size: 0.75rem; color: var(--text-secondary); float: right; }
+    .job-desc { font-size: 0.9rem; color: var(--text-secondary); margin-top: 5px; }
+
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .project-card { height: 100%; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; position: relative; }
+    .project-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+    .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .card-top h5 { color: #e6f1ff; font-size: 1rem; font-weight: 700; }
+    
+    .icon-link { color: var(--accent); font-size: 1.2rem; transition: 0.3s; cursor: pointer; }
+    .icon-link:hover { color: #fff; transform: scale(1.1); }
+    
+    .project-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 15px; flex-grow: 1; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tags span { font-family: 'Fira Code', monospace; color: var(--accent); font-size: 0.7rem; background: rgba(100, 255, 218, 0.1); padding: 3px 6px; border-radius: 4px; }
+
+    footer { text-align: center; padding: 30px; color: var(--text-secondary); font-size: 0.8rem; width: 100%; }
+    @media (max-width: 900px) { .dashboard { grid-template-columns: 1fr; margin-top: 20px; } }
+  </style>
 </head>
 
 <body>
@@ -17,101 +88,68 @@
   <main class="dashboard">
     
     <aside class="sidebar">
-      
       <div class="profile-card glass-panel">
         <h1 class="name">Santiago Paulin</h1>
-        <h2 class="role">Data Engineer</h2>
-        
+        <h2 class="role">
+           I am a <span class="txt-type" data-wait="2000" data-words='["Data Engineer", "Risk Specialist", "Cloud Architect"]'></span>
+        </h2>
         <div class="badges">
-          <span>💡 E-commerce Risk</span>
-          <span>☁️ Cloud ETLs</span>
+          <span>💡 E-commerce</span>
+          <span>📦 Risk Controls</span>
+          <span>☁️ GCP Pipelines</span>
         </div>
-
         <p class="bio">
-          Specialized in <strong>Risk Management</strong>, <strong>Logistics Efficiency</strong> & <strong>Large-scale Analytics</strong>. 
+          Hi there! 👋 I turn complex operational data into <strong>scalable, automated solutions</strong>. 
           <br><br>
-          I design end-to-end pipelines on GCP to detect anomalies, optimize shipping SLAs, and prevent financial loss in e-commerce operations.
+          Specialized in <strong>Risk Management</strong> and <strong>Logistics Efficiency</strong> to prevent financial loss in large-scale operations.
         </p>
-        
         <div class="social-links">
           <a href="https://www.linkedin.com/in/santiago-paulin" target="_blank" class="btn-social"><i class="fab fa-linkedin"></i> LinkedIn</a>
           <a href="https://github.com/santipaulin97-sudo" target="_blank" class="btn-social"><i class="fab fa-github"></i> GitHub</a>
-          <a href="cv_santiago_paulin.pdf" download class="btn-social" style="background: rgba(100, 255, 218, 0.1);">
-  <i class="fas fa-file-download"></i> CV
-</a>
+          <a href="cv_santiago_paulin.pdf" download class="btn-social btn-cv"><i class="fas fa-file-download"></i> CV</a>
         </div>
       </div>
 
       <div class="languages-card glass-panel">
         <h3><i class="fas fa-globe"></i> Languages</h3>
         <div class="lang-list">
-          <div class="lang-item">
-            <img src="https://flagcdn.com/w40/ar.png" alt="Spanish">
-            <div><strong>Spanish</strong><span>Native</span></div>
-          </div>
-          <div class="lang-item">
-            <img src="https://flagcdn.com/w40/us.png" alt="English">
-            <div><strong>English</strong><span>Advanced (C1)</span></div>
-          </div>
-          <div class="lang-item">
-            <img src="https://flagcdn.com/w40/it.png" alt="Italian">
-            <div><strong>Italian</strong><span>Advanced (C1)</span></div>
-          </div>
-          <div class="lang-item">
-            <img src="https://flagcdn.com/w40/fr.png" alt="French">
-            <div><strong>French</strong><span>Upper-Int (B2)</span></div>
-          </div>
-          <div class="lang-item">
-            <img src="https://flagcdn.com/w40/br.png" alt="Portuguese">
-            <div><strong>Portuguese</strong><span>Interm (B1)</span></div>
-          </div>
+          <div class="lang-item"><img src="https://flagcdn.com/w40/ar.png"><div><strong>Spanish</strong><span>Native</span></div></div>
+          <div class="lang-item"><img src="https://flagcdn.com/w40/us.png"><div><strong>English</strong><span>Advanced (C1)</span></div></div>
+          <div class="lang-item"><img src="https://flagcdn.com/w40/it.png"><div><strong>Italian</strong><span>Advanced (C1)</span></div></div>
+          <div class="lang-item"><img src="https://flagcdn.com/w40/fr.png"><div><strong>French</strong><span>Upper-Int (B2)</span></div></div>
+          <div class="lang-item"><img src="https://flagcdn.com/w40/br.png"><div><strong>Portuguese</strong><span>Interm (B1)</span></div></div>
         </div>
       </div>
 
       <div class="skills-card glass-panel">
         <h3><i class="fas fa-code"></i> Tech Stack</h3>
         <div class="tech-grid">
-           <div class="tech-icon" title="Python"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></div>
-           <div class="tech-icon" title="SQL"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="SQL"></div>
-           
-           <div class="tech-icon" title="Google Cloud"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP"></div>
-           
-           <div class="tech-icon" title="BigQuery"><img src="https://www.vectorlogo.zone/logos/google_bigquery/google_bigquery-icon.svg" alt="BigQuery"></div>
-           <div class="tech-icon" title="AWS"><img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS" style="filter: invert(1);"></div>
-           <div class="tech-icon" title="PowerBI"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PBI"></div>
-           <div class="tech-icon" title="Git"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"></div>
-           <div class="tech-icon" title="Pandas"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas"></div>
+           <div class="tech-icon" title="Python"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"></div>
+           <div class="tech-icon" title="SQL"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"></div>
+           <div class="tech-icon" title="GCP"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"></div>
+           <div class="tech-icon" title="BigQuery"><img src="https://www.vectorlogo.zone/logos/google_bigquery/google_bigquery-icon.svg"></div>
+           <div class="tech-icon" title="AWS"><img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" style="filter: invert(1);"></div>
+           <div class="tech-icon" title="PowerBI"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg"></div>
+           <div class="tech-icon" title="Git"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"></div>
+           <div class="tech-icon" title="Pandas"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"></div>
         </div>
       </div>
     </aside>
 
     <section class="content">
-      
       <div class="section-block">
         <h3 class="section-title"><span>01.</span> Experience</h3>
-        
         <div class="job-card glass-panel">
-          <div class="job-header">
-            <h4>Data Engineer — <span class="highlight">Mercado Libre</span></h4>
-            <span class="date">Current</span>
-          </div>
-          <p>Warehouse analytics, automations, BigQuery pipelines, Python ETLs. Optimizing logistics SLAs & Risk Controls.</p>
+          <div class="job-header"><h4>Data Engineer — <span class="highlight">Mercado Libre</span></h4><span class="date">Current</span></div>
+          <p class="job-desc">Warehouse analytics, automations, BigQuery pipelines, Python ETLs. Optimizing logistics SLAs & Risk Controls.</p>
         </div>
-
         <div class="job-card glass-panel">
-          <div class="job-header">
-            <h4>Financial Analyst — <span class="highlight">PFS Global</span></h4>
-            <span class="date">Previous</span>
-          </div>
-          <p>SQL dashboards, KPIs, margins, cost analytics for US-based clients.</p>
+          <div class="job-header"><h4>Financial Analyst — <span class="highlight">PFS Global</span></h4><span class="date">Previous</span></div>
+          <p class="job-desc">SQL dashboards, KPIs, margins, cost analytics for US-based clients.</p>
         </div>
-
         <div class="job-card glass-panel">
-          <div class="job-header">
-            <h4>Financial Analyst — <span class="highlight">Accenture</span></h4>
-            <span class="date">Previous</span>
-          </div>
-          <p>Forecasting, automation, BI reporting for North America Finance.</p>
+          <div class="job-header"><h4>Financial Analyst — <span class="highlight">Accenture</span></h4><span class="date">Previous</span></div>
+          <p class="job-desc">Forecasting, automation, BI reporting for North America Finance.</p>
         </div>
       </div>
 
@@ -121,27 +159,19 @@
           
           <div class="project-card glass-panel">
             <div class="card-top">
-              <h5>🤖 Daily AI Stock Reporter</h5>
-              <i class="fas fa-chart-line icon-proj"></i>
-            </div>
-            <p>Auto-runs at 9 AM daily. Generates reports for Top 20 Global Companies with <strong>AI Sentiment Analysis</strong>.</p>
-            <div class="tags"><span>Python Cron</span><span>NLP</span><span>YahooFin</span></div>
-          </div>
-
-          <div class="project-card glass-panel">
-            <div class="card-top">
               <h5>🥇 Gold Price AI Predictor</h5>
               <a href="https://github.com/santipaulin97-sudo/Gold-Prediction" target="_blank" title="View Code">
-              <i class="fas fa-coins icon-proj"></i>
+                <i class="fab fa-github icon-link"></i>
+              </a>
             </div>
-            <p>Analyzes 3-year gold trends vs US Fed Rates. Uses ML models to predict pricing based on macro conditions.</p>
-            <div class="tags"><span>Scikit-Learn</span><span>Matplotlib</span><span>Pandas</span></div>
+            <p>Gold prediction based on LLM, inflation history, and geopolitical events (wars/crises). Uses ML to forecast price impact.</p>
+            <div class="tags"><span>LLMs</span><span>Python</span><span>Inflation Analytics</span></div>
           </div>
 
           <div class="project-card glass-panel">
             <div class="card-top">
               <h5>⚡ ETL Performance Monitor</h5>
-              <i class="fas fa-tachometer-alt icon-proj"></i>
+              <i class="fas fa-tachometer-alt" style="color: var(--accent); opacity: 0.5;"></i>
             </div>
             <p>Real-time dashboard to track latency and failures in large-scale data pipelines.</p>
             <div class="tags"><span>Python</span><span>SQL</span><span>BigQuery</span></div>
@@ -149,8 +179,17 @@
 
           <div class="project-card glass-panel">
             <div class="card-top">
+              <h5>🤖 Daily AI Stock Reporter</h5>
+              <i class="fas fa-chart-line" style="color: var(--accent); opacity: 0.5;"></i>
+            </div>
+            <p>Auto-runs at 9 AM daily. Generates reports for Top 20 Global Companies with <strong>AI Sentiment Analysis</strong>.</p>
+            <div class="tags"><span>Python Cron</span><span>NLP</span><span>YahooFin</span></div>
+          </div>
+
+          <div class="project-card glass-panel">
+            <div class="card-top">
               <h5>✈️ Travel Bot API</h5>
-              <i class="fas fa-plane icon-proj"></i>
+              <i class="fas fa-plane" style="color: var(--accent); opacity: 0.5;"></i>
             </div>
             <p>Backend API for automated booking management and itinerary adjustments.</p>
             <div class="tags"><span>FastAPI</span><span>AWS Lambda</span></div>
@@ -158,14 +197,25 @@
 
         </div>
       </div>
-
     </section>
   </main>
 
-  <footer>
-    <p>Designed & Built by Santiago Paulin</p>
-  </footer>
+  <footer><p>Designed & Built by Santiago Paulin</p></footer>
 
-  <script src="app.js"></script>
+  <script>
+    const canvas = document.getElementById("network");
+    const ctx = canvas.getContext("2d");
+    let w, h, nodes;
+    function resize() { w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; nodes=Array(Math.min(80, Math.floor(w*h/15000))).fill().map(()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-0.5)*0.5,vy:(Math.random()-0.5)*0.5})); }
+    resize(); window.addEventListener("resize", resize);
+    function draw() { ctx.clearRect(0,0,w,h); nodes.forEach(n=>{ n.x+=n.vx; n.y+=n.vy; if(n.x<0||n.x>w)n.vx*=-1; if(n.y<0||n.y>h)n.vy*=-1; ctx.beginPath(); ctx.arc(n.x,n.y,2,0,Math.PI*2); ctx.fillStyle="#64ffda"; ctx.fill(); });
+      for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){ let d=Math.hypot(nodes[i].x-nodes[j].x, nodes[i].y-nodes[j].y); if(d<120){ ctx.beginPath(); ctx.moveTo(nodes[i].x,nodes[i].y); ctx.lineTo(nodes[j].x,nodes[j].y); ctx.strokeStyle=`rgba(100,255,218,0.15)`; ctx.stroke(); }} requestAnimationFrame(draw); }
+    draw();
+    
+    /* TypeWriter */
+    const TypeWriter=function(t,e,i=3000){this.t=t,this.e=e,this.tx='',this.w=0,this.wt=parseInt(i,10),this.ty(),this.d=!1};
+    TypeWriter.prototype.ty=function(){const t=this.w%this.e.length,s=this.e[t];this.d?this.tx=s.substring(0,this.tx.length-1):this.tx=s.substring(0,this.tx.length+1),this.t.innerHTML=`<span class="txt">${this.tx}</span>`;let i=100;this.d&&(i/=2),this.d||this.tx!==s?this.d&&''===this.tx&&(this.d=!1,this.w++,i=500):(i=this.wt,this.d=!0),setTimeout(()=>this.ty(),i)};
+    document.addEventListener('DOMContentLoaded',()=>new TypeWriter(document.querySelector('.txt-type'),JSON.parse(document.querySelector('.txt-type').getAttribute('data-words')),document.querySelector('.txt-type').getAttribute('data-wait')));
+  </script>
 </body>
 </html>
