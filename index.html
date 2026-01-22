@@ -10,19 +10,23 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* ====== VARIABLES & RESET ====== */
-:root {
-      /* Fondo Blanco Humo */
-      --bg-color: #f4f7f6;
-      /* Texto Oscuro (Casi negro) */
-      --text-primary: #1a1a1a;
-      /* Texto Secundario (Gris oscuro) */
-      --text-secondary: #4a4a4a;
-      /* Acento AZUL CORPORATIVO */
-      --accent: #007bff;
-      /* Paneles Blancos con sombra */
-      --panel-bg: rgba(255, 255, 255, 0.85);
-      --panel-border: rgba(0, 0, 0, 0.1);
+/* ====== TEMA CLARO CORREGIDO (ALTO CONTRASTE) ====== */
+    :root {
+      /* Fondo Blanco Humo (Suave) */
+      --bg-color: #f8f9fa;
+      
+      /* ✨ LA CLAVE: Texto Principal OSCURO (Casi negro) ✨ */
+      --text-primary: #212529;
+      
+      /* Texto Secundario (Gris oscuro legible) */
+      --text-secondary: #495057;
+      
+      /* Acento AZUL FUERTE (Para que resalte sobre blanco) */
+      --accent: #0d6efd;
+      
+      /* Paneles Blancos Sólidos con sombra suave */
+      --panel-bg: #ffffff;
+      --panel-border: rgba(0, 0, 0, 0.08);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
     body { background: var(--bg-color); color: var(--text-primary); min-height: 100vh; display: flex; flex-direction: column; align-items: center; overflow-x: hidden; }
@@ -30,7 +34,9 @@
     
     /* LAYOUT */
     .dashboard { display: grid; grid-template-columns: 350px 1fr; gap: 30px; width: 100%; max-width: 1250px; margin: 40px auto; padding: 0 20px; align-items: start; }
-    .glass-panel { background: var(--panel-bg); backdrop-filter: blur(12px); border: 1px solid var(--panel-border); border-radius: 12px; padding: 25px; margin-bottom: 20px; box-shadow: 0 10px 30px -10px rgba(2,12,27,0.7); }
+    .glass-panel {
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important;
+    }
     .sidebar { position: sticky; top: 20px; }
 
     /* PROFILE */
