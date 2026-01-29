@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,22 +10,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* ====== TEMA OSCURO (Mejor Contraste y Estilo Data) ====== */
+    /* ====== TEMA OSCURO (Dark Mode) ====== */
     :root {
-      /* Fondo Azul Profundo (Estilo Tech/Data) */
-      --bg-color: #0b1120;
-      
-      /* Texto Principal (Blanco suave) */
-      --text-primary: #e6f1ff;
-      
-      /* Texto Secundario (Gris azulado) */
-      --text-secondary: #94a3b8;
-      
-      /* Acento AZUL LUMINOSO (Resalta sobre oscuro) */
-      --accent: #38bdf8;
-      
-      /* Paneles (Un tono más claro que el fondo) */
-      --panel-bg: #1e293b;
+      --bg-color: #0b1120;      /* Azul Profundo */
+      --text-primary: #e6f1ff;  /* Blanco Suave */
+      --text-secondary: #94a3b8;/* Gris Azulado */
+      --accent: #38bdf8;        /* Azul Cyan Luminoso */
+      --panel-bg: #1e293b;      /* Paneles */
       --panel-border: rgba(255, 255, 255, 0.05);
     }
 
@@ -43,6 +34,32 @@
     }
     .sidebar { position: sticky; top: 20px; }
 
+    /* === INTERRUPTOR DE IDIOMA === */
+    .lang-switch-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 15px;
+    }
+    .lang-btn {
+        background: transparent;
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        padding: 5px 15px;
+        font-family: 'Fira Code', monospace;
+        font-size: 0.8rem;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .lang-btn:hover { background: rgba(56, 189, 248, 0.1); }
+    .lang-btn.active { background: var(--accent); color: var(--bg-color); font-weight: bold; }
+    
+    /* Clases para ocultar/mostrar idiomas */
+    .hidden { display: none !important; }
+
     /* PROFILE */
     .profile-img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--accent); margin-bottom: 20px; object-fit: cover; display: block; margin-left: auto; margin-right: auto; }
     .name { font-size: 2rem; font-weight: 700; color: var(--text-primary); line-height: 1.1; text-align: center; }
@@ -51,14 +68,13 @@
     .badges span { background: rgba(56, 189, 248, 0.1); color: var(--accent); font-size: 0.7rem; padding: 4px 8px; border-radius: 15px; border: 1px solid rgba(56, 189, 248, 0.3); }
     .bio { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px; text-align: justify; }
 
-    /* BOTONES SOCIALES */
+    /* SOCIAL & TECH */
     .social-links { display: flex; gap: 10px; flex-wrap: wrap; }
     .btn-social { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px; background: transparent; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; border-radius: 6px; font-family: 'Fira Code', monospace; font-size: 0.85rem; transition: 0.3s; min-width: 100px; }
     .btn-social:hover { background: rgba(56, 189, 248, 0.1); transform: translateY(-2px); }
     .btn-cv { background: rgba(56, 189, 248, 0.1); border-color: var(--accent); color: var(--text-primary); } 
     .btn-cv:hover { background: var(--accent); color: var(--bg-color); }
 
-    /* LANGS & TECH */
     .lang-list { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
     .lang-item { display: flex; align-items: center; gap: 12px; padding: 8px; background: rgba(255,255,255,0.03); border-radius: 6px; }
     .lang-item img { width: 24px; height: auto; border-radius: 2px; }
@@ -105,23 +121,41 @@
   <main class="dashboard">
     
     <aside class="sidebar">
+      
+      <div class="lang-switch-container">
+        <button id="btn-es" class="lang-btn active" onclick="setLanguage('es')">ES</button>
+        <button id="btn-en" class="lang-btn" onclick="setLanguage('en')">EN</button>
+      </div>
+
       <div class="profile-card glass-panel">
         <img src="profile.jpg" alt="Tomas Gnarra" class="profile-img" onerror="this.style.display='none'">
         
         <h1 class="name">Tomas Gnarra</h1>
+        
         <h2 class="role">
-           I am a <span class="txt-type" data-wait="2000" data-words='["Data Scientist", "Business Admin", "BI Expert"]'></span>
+           <span class="es">Soy</span><span class="en hidden">I am a</span> 
+           <span class="txt-type" data-wait="2000" data-words='["Data Scientist", "Business Admin", "BI Expert"]'></span>
         </h2>
+
         <div class="badges">
           <span>💡 Business Driven</span>
           <span>📦 Risk Ops</span>
           <span>🧠 Machine Learning</span>
         </div>
-        <p class="bio">
-          Hi! I am a <strong>Business Administrator turned Data Scientist</strong>. 
-          <br><br>
-          Unlike a traditional developer, I understand your P&L. I transform complex data into <strong>profitable decisions</strong> and automated efficiency.
-        </p>
+
+        <div class="bio">
+          <p class="es">
+            ¡Hola! Soy un <strong>Administrador de Empresas convertido en Data Scientist</strong>.
+            <br><br>
+            A diferencia de un desarrollador tradicional, entiendo tu P&L (Ganancias y Pérdidas). Transformo datos complejos en <strong>decisiones rentables</strong> y eficiencia automatizada.
+          </p>
+          <p class="en hidden">
+            Hi! I am a <strong>Business Administrator turned Data Scientist</strong>. 
+            <br><br>
+            Unlike a traditional developer, I understand your P&L. I transform complex data into <strong>profitable decisions</strong> and automated efficiency.
+          </p>
+        </div>
+
         <div class="social-links">
           <a href="https://www.linkedin.com/in/tomas-gnarra/" target="_blank" class="btn-social"><i class="fab fa-linkedin"></i> LinkedIn</a>
           <a href="https://github.com/TomasGnarra" target="_blank" class="btn-social"><i class="fab fa-github"></i> GitHub</a>
@@ -130,19 +164,19 @@
       </div>
 
       <div class="languages-card glass-panel">
-        <h3><i class="fas fa-globe"></i> Languages</h3>
+        <h3><i class="fas fa-globe"></i> <span class="es">Idiomas</span><span class="en hidden">Languages</span></h3>
         <div class="lang-list">
           <div class="lang-item">
             <img src="https://flagcdn.com/w40/es.png">
-            <div><strong>Spanish</strong><span> Native</span></div>
+            <div><strong>Español</strong><span class="es"> Nativo</span><span class="en hidden"> Native</span></div>
           </div>
           <div class="lang-item">
             <img src="https://flagcdn.com/w40/us.png">
-            <div><strong>English</strong><span> Basic</span></div>
+            <div><strong>Inglés</strong><span class="es"> Básico</span><span class="en hidden"> Basic</span></div>
           </div>
           <div class="lang-item">
             <img src="https://flagcdn.com/w40/br.png">
-            <div><strong>Portuguese</strong><span> Native</span></div>
+            <div><strong>Portugués</strong><span class="es"> Nativo</span><span class="en hidden"> Native</span></div>
           </div>
         </div>
       </div>
@@ -163,72 +197,123 @@
     </aside>
 
     <section class="content">
+      
       <div class="section-block">
-        <h3 class="section-title"><span>01.</span> Experience</h3>
+        <h3 class="section-title"><span>01.</span> <span class="es">Experiencia</span><span class="en hidden">Experience</span></h3>
         
         <div class="job-card glass-panel">
-          <div class="job-header"><h4>Risk Management Analyst & Developer — <span class="highlight">Mercado Libre</span></h4><span class="date">2023 - Present</span></div>
-          <p class="job-desc">Leading <strong>End-to-End</strong> development of risk controls for Shipping Inbound. Designing automated ETL pipelines in BigQuery/Airflow and building monitoring dashboards in Looker to mitigate operational risks in LATAM's largest logistics network.</p>
+          <div class="job-header">
+            <h4>
+              <span class="es">Analista de Riesgos & Desarrollador</span>
+              <span class="en hidden">Risk Management Analyst & Developer</span>
+              — <span class="highlight">Mercado Libre</span>
+            </h4>
+            <span class="date">2023 - Present</span>
+          </div>
+          <p class="job-desc es">
+            Liderando el desarrollo <strong>End-to-End</strong> de controles de riesgo para Envíos (Inbound). Diseño de pipelines ETL automatizados en BigQuery/Airflow y dashboards de monitoreo en Looker para mitigar riesgos operativos en la red logística más grande de LATAM.
+          </p>
+          <p class="job-desc en hidden">
+            Leading <strong>End-to-End</strong> development of risk controls for Shipping Inbound. Designing automated ETL pipelines in BigQuery/Airflow and building monitoring dashboards in Looker to mitigate operational risks in LATAM's largest logistics network.
+          </p>
         </div>
 
         <div class="job-card glass-panel">
-          <div class="job-header"><h4>Supply Chain Operations Analyst — <span class="highlight">Naranja X</span></h4><span class="date">2022 - 2023</span></div>
-          <p class="job-desc">Optimized logistics KPIs and inventory management. Implemented data-driven strategies to improve supply chain efficiency and reduce operational costs.</p>
+          <div class="job-header">
+            <h4>
+              <span class="es">Analista de Operaciones Supply Chain</span>
+              <span class="en hidden">Supply Chain Operations Analyst</span>
+              — <span class="highlight">Naranja X</span>
+            </h4>
+            <span class="date">2022 - 2023</span>
+          </div>
+          <p class="job-desc es">
+            Optimización de KPIs logísticos y gestión de inventario. Implementación de estrategias basadas en datos para mejorar la eficiencia de la cadena de suministro y reducir costos operativos.
+          </p>
+          <p class="job-desc en hidden">
+            Optimized logistics KPIs and inventory management. Implemented data-driven strategies to improve supply chain efficiency and reduce operational costs.
+          </p>
         </div>
 
         <div class="job-card glass-panel">
-          <div class="job-header"><h4>Freelance Consultant — <span class="highlight">Upwork / Workana</span></h4><span class="date">2024 - Present</span></div>
-          <p class="job-desc">Helping international clients automate manual processes (Excel to Python) and visualizing business insights via Power BI dashboards.</p>
+          <div class="job-header">
+            <h4>
+              <span class="es">Consultor Freelance</span>
+              <span class="en hidden">Freelance Consultant</span>
+              — <span class="highlight">Upwork / Workana</span>
+            </h4>
+            <span class="date">2024 - Present</span>
+          </div>
+          <p class="job-desc es">
+            Ayudando a clientes internacionales a automatizar procesos manuales (de Excel a Python) y visualizar insights de negocio mediante tableros de Power BI.
+          </p>
+          <p class="job-desc en hidden">
+            Helping international clients automate manual processes (Excel to Python) and visualizing business insights via Power BI dashboards.
+          </p>
         </div>
       </div>
 
       <div class="section-block">
-        <h3 class="section-title"><span>02.</span> Selected Projects</h3>
+        <h3 class="section-title"><span>02.</span> <span class="es">Proyectos Destacados</span><span class="en hidden">Selected Projects</span></h3>
         <div class="projects-grid">
           
           <div class="project-card glass-panel">
             <div class="card-top">
-              <h5>📈 Stock Market Sentiment AI</h5>
-              <a href="https://github.com/TomasGnarra/Stock-Market-Sentiment-Prediction" target="_blank" title="Ver Código">
+              <h5>
+                  <span class="es">📈 IA de Predicción Financiera</span>
+                  <span class="en hidden">📈 Stock Market Sentiment AI</span>
+              </h5>
+              <a href="https://github.com/TomasGnarra/Stock-Market-Sentiment-Prediction" target="_blank" title="Code">
                 <i class="fas fa-chart-line icon-link"></i>
               </a>
             </div>
-            <p>Financial prediction system combining <strong>Quantitative Analysis</strong> (Prices) with <strong>Qualitative NLP</strong> (News) to forecast Merval market trends. Accuracy: 70-92%.</p>
+            <p class="es">Sistema de predicción combinando <strong>Análisis Cuantitativo</strong> (Precios) con <strong>NLP Cualitativo</strong> (Noticias) para pronosticar tendencias del Merval. Precisión: 70-92%.</p>
+            <p class="en hidden">Financial prediction system combining <strong>Quantitative Analysis</strong> (Prices) with <strong>Qualitative NLP</strong> (News) to forecast Merval market trends. Accuracy: 70-92%.</p>
             <div class="tags"><span>Python</span><span>NLP</span><span>GCP</span><span>YahooFinance</span></div>
           </div>
 
           <div class="project-card glass-panel">
             <div class="card-top">
-              <h5>📊 Automated Sales Dashboard</h5>
-              <a href="https://github.com/TomasGnarra" target="_blank" title="Ver GitHub">
+              <h5>
+                  <span class="es">📊 Dashboard de Ventas Automatizado</span>
+                  <span class="en hidden">📊 Automated Sales Dashboard</span>
+              </h5>
+              <a href="https://github.com/TomasGnarra" target="_blank" title="Code">
                 <i class="fas fa-chart-pie icon-link"></i>
               </a>
             </div>
-            <p>Interactive Power BI Dashboard connected to SQL database for real-time sales tracking. Automated refresh eliminates 10+ hours of manual Excel work per week.</p>
-            <div class="tags">
-              <span>Power BI</span><span>SQL</span><span>DAX</span>
-            </div>
+            <p class="es">Tablero interactivo en Power BI conectado a SQL para seguimiento en tiempo real. La actualización automática elimina +10 horas de trabajo manual en Excel por semana.</p>
+            <p class="en hidden">Interactive Power BI Dashboard connected to SQL database for real-time sales tracking. Automated refresh eliminates 10+ hours of manual Excel work per week.</p>
+            <div class="tags"><span>Power BI</span><span>SQL</span><span>DAX</span></div>
           </div>
 
           <div class="project-card glass-panel">
             <div class="card-top">
-              <h5>🤖 RPA Invoice Processor</h5>
-              <a href="https://github.com/TomasGnarra" target="_blank" title="Ver GitHub">
+              <h5>
+                  <span class="es">🤖 Procesador de Facturas RPA</span>
+                  <span class="en hidden">🤖 RPA Invoice Processor</span>
+              </h5>
+              <a href="https://github.com/TomasGnarra" target="_blank" title="Code">
                 <i class="fas fa-file-invoice-dollar icon-link"></i>
               </a>
             </div>
-            <p>Python script that scrapes invoices from email/web, extracts key data using Regex/Pandas, and uploads it directly to the ERP system.</p>
+            <p class="es">Script de Python que descarga facturas de email/web, extrae datos clave usando Regex/Pandas y los carga directamente al sistema ERP.</p>
+            <p class="en hidden">Python script that scrapes invoices from email/web, extracts key data using Regex/Pandas, and uploads it directly to the ERP system.</p>
             <div class="tags"><span>Python</span><span>Selenium</span><span>Pandas</span></div>
           </div>
 
           <div class="project-card glass-panel">
             <div class="card-top">
-              <h5>⚡ ETL Data Quality Pipeline</h5>
-              <a href="https://github.com/TomasGnarra" target="_blank" title="Ver GitHub">
+              <h5>
+                  <span class="es">⚡ Pipeline ETL de Calidad de Datos</span>
+                  <span class="en hidden">⚡ ETL Data Quality Pipeline</span>
+              </h5>
+              <a href="https://github.com/TomasGnarra" target="_blank" title="Code">
                 <i class="fas fa-database icon-link"></i>
               </a>
             </div>
-            <p>End-to-End pipeline on Google Cloud to clean, validate, and transform raw shipping data into production-ready tables for analytics.</p>
+            <p class="es">Pipeline End-to-End en Google Cloud para limpiar, validar y transformar datos crudos de envíos en tablas listas para producción y análisis.</p>
+            <p class="en hidden">End-to-End pipeline on Google Cloud to clean, validate, and transform raw shipping data into production-ready tables for analytics.</p>
             <div class="tags"><span>BigQuery</span><span>SQL</span><span>Airflow</span></div>
           </div>
 
@@ -240,7 +325,34 @@
   <footer><p>Designed & Built by Tomas Gnarra</p></footer>
 
   <script>
-    /* ANIMACIÓN DE FONDO (Color ajustado al tema oscuro) */
+    /* === LOGICA DE CAMBIO DE IDIOMA === */
+    function setLanguage(lang) {
+        // Seleccionar elementos
+        const esElements = document.querySelectorAll('.es');
+        const enElements = document.querySelectorAll('.en');
+        const btnEs = document.getElementById('btn-es');
+        const btnEn = document.getElementById('btn-en');
+
+        if (lang === 'es') {
+            // Mostrar Español, Ocultar Inglés
+            esElements.forEach(el => el.classList.remove('hidden'));
+            enElements.forEach(el => el.classList.add('hidden'));
+            
+            // Actualizar botones
+            btnEs.classList.add('active');
+            btnEn.classList.remove('active');
+        } else {
+            // Mostrar Inglés, Ocultar Español
+            enElements.forEach(el => el.classList.remove('hidden'));
+            esElements.forEach(el => el.classList.add('hidden'));
+
+            // Actualizar botones
+            btnEn.classList.add('active');
+            btnEs.classList.remove('active');
+        }
+    }
+
+    /* ANIMACIÓN DE FONDO */
     const canvas = document.getElementById("network");
     const ctx = canvas.getContext("2d");
     let w, h, nodes;
@@ -250,7 +362,7 @@
       for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){ let d=Math.hypot(nodes[i].x-nodes[j].x, nodes[i].y-nodes[j].y); if(d<120){ ctx.beginPath(); ctx.moveTo(nodes[i].x,nodes[i].y); ctx.lineTo(nodes[j].x,nodes[j].y); ctx.strokeStyle=`rgba(56, 189, 248, 0.15)`; ctx.stroke(); }} requestAnimationFrame(draw); }
     draw();
     
-    /* MAQUINA DE ESCRIBIR (TypeWriter) */
+    /* MAQUINA DE ESCRIBIR */
     const TypeWriter=function(t,e,i=3000){this.t=t,this.e=e,this.tx='',this.w=0,this.wt=parseInt(i,10),this.ty(),this.d=!1};
     TypeWriter.prototype.ty=function(){const t=this.w%this.e.length,s=this.e[t];this.d?this.tx=s.substring(0,this.tx.length-1):this.tx=s.substring(0,this.tx.length+1),this.t.innerHTML=`<span class="txt">${this.tx}</span>`;let i=100;this.d&&(i/=2),this.d||this.tx!==s?this.d&&''===this.tx&&(this.d=!1,this.w++,i=500):(i=this.wt,this.d=!0),setTimeout(()=>this.ty(),i)};
     document.addEventListener('DOMContentLoaded',()=>new TypeWriter(document.querySelector('.txt-type'),JSON.parse(document.querySelector('.txt-type').getAttribute('data-words')),document.querySelector('.txt-type').getAttribute('data-wait')));
